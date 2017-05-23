@@ -1,6 +1,7 @@
 const gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	prefix = require('gulp-autoprefixer'),
+	pug = require('gulp-pug'),
 	sync = require('browser-sync');
 
 gulp.task('sass', () => {
@@ -15,6 +16,15 @@ gulp.task('sass', () => {
 		.pipe(sync.stream());
 });
 
+gulp.task('views', () => {
+	return gulp.src('./src/views/**/**/*.pug')
+		.pipe(pug({
+			pretty: '\t'
+		}))
+		.pipe(gulp.dest('./build'))
+		.pipe(sync.stream());
+});
+
 gulp.task('watch', () => {
 	sync({
 		port: 5000, // use *different* port than above
@@ -26,7 +36,8 @@ gulp.task('watch', () => {
 	});
 
 	gulp.watch('src/sass/**/*.scss', ['sass']);
-	gulp.watch('build/**/*.html', sync.reload);
+	gulp.watch('src/views/**/*.pug', ['views']);
+	//gulp.watch('build/**/*.html', sync.reload);
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['views', 'sass', 'watch']);

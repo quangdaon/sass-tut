@@ -1,0 +1,233 @@
+-
+	var refs = [
+		'http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#interpolation_',
+		'http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#control_directives__expressions',
+		'http://www.sass-lang.com/documentation/Sass/Script/Functions.html'
+	];
+
+mixin section(title)
+	section(id=title.toLowerCase().replace(/[^\w]/g, ' ').trim().replace(/ /g, '-'))
+		h2=title
+		block
+
+mixin sub(title)
+	div(id=title.toLowerCase().replace(/[^\w]/g, ' ').trim().replace(/ /g, '-'))
+		h3=title
+		block
+
+mixin note(num)
+	sup [#[a(href=refs[num-1], target="_blank") #{num}]]
+
+doctype html
+html
+	head
+		title Sass Lunch & Learn
+		link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Satisfy", rel="stylesheet")
+		link(rel="stylesheet", href="./css/base.css")
+		link(rel="stylesheet", href="./css/training.css")
+	body
+		header.header
+			img(src="./img/sass-logo.svg")
+		#main
+			+section('History')
+				+sub('Sass')
+					p Sass (Syntactically Awesome StyleSheets) started out as a whitespace-dependent scripting language that compiles into CSS. In other words, it is a "CSS preprocessor". It was first released as a companion to Haml (HTML Abstraction Markup Language), a templating language for HTML that follows a similar indent-based syntax. As a preprocessor, Sass' primary purpose is to extend the CSS language with mechanisms found in other programming languages. Files written in the indent syntax typically end in ".sass".
+					.example
+						h4 Example
+						div
+							pre
+								code.
+									body
+										color: red
+										h3
+											font-size: 122em
+				+sub('SCSS')
+					p As of the third iteration of the Sass preprocessor (Sass 3), the language has broken away from its Haml roots and adapted a new syntax similar to CSS. This new default syntax is renamed SCSS (Sassy CSS). Unlike Sass, which can be considered its own language, SCSS is known as a "metalanguage," meaning it is strictly an extension of CSS. Any valid CSS is also valid SCSS. For the rest of this document, Sass will refer to the new SCSS syntax. Files written in this new syntax are succeeded by the ".scss" extension.
+					.example
+						h4 Example
+						div
+							pre
+								code.
+									body {
+										color: red;
+										h3 {
+											font-size: 122em;
+										}
+									}
+			+section('Nesting')
+				p As you may have already noticed above, Sass supports the nesting of selectors. This is one of the biggest features of Sass. Selectors nested inside another selector are treated as a child of the former. More specifically, the child is appended to the end of the parent selector after a space. There is no limit to how deep selectors can be nested, though ten levels deep is generally accepted as overkill.
+				.example
+					h4 Example
+					.columns
+						div
+							h5 Before
+							pre
+								code.
+									body {
+										font-size: 3px;
+										h3 {
+											color: red;
+										}
+									}
+						div
+							h5 After
+							pre
+								code.
+									body {
+										font-size: 3px;
+									}
+
+									body h3 {
+										color: red;
+									}
+			+section('Variables')
+				p One of the features that make SCSS closer to a standard programming language than it is to CSS is the use of variables. Like other languages, variables define a certain value, that is then "injected" to any point in the code when it is called. However, rather than storing a value to be manipulated later, variables are mostly used to keep track of commonly used colors, fonts, etc. to make "theming" a website much easier. Variables in Sass are preceded by a dollar sign ($) and can contain alphanumeric values of dashes.
+				.example
+					h4 Example
+					.columns
+						div
+							h5 Before
+							pre
+								code.
+									$color: red;
+
+									h1 {
+										color: $color;
+										border: 1px solid $color;
+									}
+						div
+							h5 After
+							pre
+								code.
+									h1 {
+										color: red;
+										border: 1px solid red;
+									}
+				+sub('Interpolation')
+					p By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated as strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either#[+note(1)].
+					.example
+						h4 Example
+						.columns
+							div
+								h5 Before
+								pre
+									code.
+										$smallScreen: 'only screen and (max-width: 767px)';
+
+										@media \#{$smallScreen} {
+											h3 {
+												color: tomato;
+											}
+										}
+							div
+								h5 After
+								pre
+									code.
+										@media only screen and (max-width: 767px) {
+											h3 {
+												color: tomato;
+											}
+										}
+			+section('Mixins')
+				p Another useful feature of Sass is mixins. Essentially, a mixin is a block of reusable code that can be used to automatically generate some CSS properties. In a way, mixins are reminiscent of a function in other programming languages. Mixins are defined using the "@mixin" keyword and otherwise works just like a normal CSS selector. They can be called using "@include mixin-name".
+				.example
+					h4 Example 1
+					.columns
+						div
+							h5 Before
+							pre
+								code.
+									@mixin humongous {
+										font-size: 1000px;
+										width: 1000px;
+										height: 1000px;
+									}
+
+									div {
+										@include humongous;
+									}
+						div
+							h5 After
+							pre
+								code.
+									div {
+										font-size: 1000px;
+										width: 1000px;
+										height: 1000px;
+									}
+				.example
+					h4 Example 2 - The following buttons are created using mixins.
+					- for(var i = 1; i <= 3; i++)
+						a(href="#", class='button-' + i) Test Button
+			+section('Functions and Directives')
+				p This is where Sass really defines itself as a programming language. Earlier, it was stated that mixins are like functions. However, Sass already has built-in support for actual functions. Mixins and functions serve similar purposes, being to reduce the repetition in your code; however, mixins are primarily used to generate blocks of code, while functions mainly calculate values. In a way, mixins are closer to "document.write()" in JavaScript, while functions are... well, functions.
+				.example
+					h4 Example from Official Docs
+					.columns
+						div
+							h5 Before
+							pre
+								code.
+									@function returnOneIfOneAndEighteenIfNot($in) {
+										@if($in = 1) {
+											@return 1;
+										} @else {
+											@return 'eighteen';
+										}
+									}
+
+									p:before {
+										content: returnOneIfOneAndEighteenIfNot(42);
+									}
+						div
+							h5 After
+							pre
+								code.
+									p:before {
+										content: 'eighteen';
+									}
+				.example
+					h4 Example 2 - See Buttons Above. The text of the colors are determined by a function that checks the brightness of the background.
+				+sub('Control Directives')
+					p Control directives are simply a fancy name for loops and conditionals. In Sass, one can use "@if" statements to alter a certain value. These directives function similarly to how they would in most programming languages. Due to the extensiveness of these directives, check the references for a link to the official documents instead#[+note(2)].
+					.example
+						h4 Example from Official Docs
+						.columns
+							div
+								h5 Before
+								pre
+									code.
+										@for $i from 1 through 3 {
+											.item-\#{$i} { width: 2em * $i; }
+										}
+							div
+								h5 After
+								pre
+									code.
+										.item-1 {
+											width: 2em;
+										}
+
+										.item-2 {
+											width: 4em;
+										}
+
+										.item-3 {
+											width: 6em;
+										}
+				+sub('Built-In Functions')
+					p Sass has a variety of pre-made functions. The most helpful ones, in particular, are the color manipulating functions. For example, the function "darken(#f00, 10%)" calculates a new color that is 10% darker than red. A list of the built-in functions can be found in the references#[+note(3)].
+			+section("Let's Get Crazy!")
+				p So far, we've seen nesting, mixins, variables, and functions. The examples so far mostly demonstrate conveniences, rather than actual benefits. Combining these techniques allows us to generate much more complex styles that would be nearly impossible to replicate using CSS alone. For example, using just SCSS (and 100 divs in HTML), the heart shape below can be created in just 26 lines of code, whereas the same effect can take up to hundreds of lines of CSS to replicate.
+				.insanity
+					- for(var i = 0; i < 100; i++)
+						div
+			+section('Reminders')
+				ul
+					li Unlike regular CSS, SCSS requires terminating your properties with semicolons.
+					li SCSS is only aware of the CSS #[i syntax], and not the language itself. This means that invalid properties, such as "font-size: green;" will be accepted by the compiler.
+			+section('References')
+				ol
+					each ref in refs
+						li
+							a(href=ref)=ref
