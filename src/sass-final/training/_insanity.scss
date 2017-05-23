@@ -1,0 +1,25 @@
+/*** INSANITY ***/
+.insanity {
+	width: 100px;
+	height: 100px;
+	margin: 60px auto 0;
+	position: relative;
+	//transform: translateY(50%);
+	div {
+		border-radius: 100%;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		transform-origin: bottom;
+		$sharpness: 100;
+		@for $i from 1 through $sharpness {
+			&:nth-child(#{$i}) {
+				$mod: (($i % 2) * 2) - 1;
+				$h: 255 * ($i / $sharpness);
+				$w: ($sharpness - $i) / $sharpness;
+				background: hsl($h, 100, 50);
+				transform: scale($w, $w) translateY(-50%) translateX(#{$mod * 45 + '%'});
+			}
+		}
+	}
+}

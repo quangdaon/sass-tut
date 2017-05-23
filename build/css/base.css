@@ -1,0 +1,32 @@
+/*** LAYOUT ***/
+html, body {
+    margin: 0;
+}
+
+body {
+    padding: 0.5in;
+}
+
+p {
+    font-size: 16px;
+}
+
+pre {
+    -moz-tab-size: 4;
+      -o-tab-size: 4;
+         tab-size: 4;
+}
+
+/*** HEADER ***/
+.header {
+    text-align: center;
+    border-bottom: 5px solid #000;
+    padding-bottom: 10px;
+}
+
+.header img {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 70px;
+    margin: 0 20px;
+}

@@ -1,0 +1,64 @@
+/*** NESTING ***/
+.example {
+	display: block;
+	text-align: center;
+	> div {
+		display: inline-block;
+		background: #eee;
+		padding: 0 20px;
+		&:hover {
+			background: #ddd;
+		}
+	}
+	.columns {
+		display: inline-block;
+		h5 {
+			margin: 0;
+		}
+		div {
+			display: inline-block;
+			margin: 10px;
+			vertical-align: top;
+		}
+	}
+	pre {
+		text-align: left;
+	}
+}
+
+/*** VARIABLES ***/
+body {
+	font-family: $font-1;
+}
+
+h2 {
+	font-family: $font-2;
+	color: $color-1;
+}
+
+h4 {
+	font-family: $font-2;
+}
+
+h5 {
+	border-bottom: 1px solid $color-1;
+}
+
+@media #{$smallScreen} {
+	body {
+		padding: 10px;
+	}
+}
+
+/*** MIXINS AND FUNCTIONS ***/
+.button-1 {
+	@include button(#f00);
+}
+
+.button-2 {
+	@include button(#ff0);
+}
+
+.button-3 {
+	@include button(#929);
+}
