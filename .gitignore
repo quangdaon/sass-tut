@@ -64,3 +64,4 @@ typings/
 # Quangdao's Dev Code
 gulp-dev.js
 *.pug
+build/css/*.css
