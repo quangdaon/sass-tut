@@ -5,7 +5,7 @@ const gulp = require('gulp'),
 	sync = require('browser-sync');
 
 gulp.task('sass', () => {
-	return gulp.src('./src/sass/**/**/*.scss')
+	return gulp.src('./src/sass-final/**/**/*.scss')
 		.pipe(sass({
 			outputStyle: 'expanded',
 			indentType: 'space',

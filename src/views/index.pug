@@ -80,6 +80,8 @@ html
 									body h3 {
 										color: red;
 									}
+				+sub('The & Operator')
+					p With nesting, Sass introduces a new operator: the ampersand (&). It is a common misconception that the ampersand is used to "extend" the previous selector. To an extent, this is true. For example, nesting "h3" with "&:hover" does generate "h3:hover". This can be useful for psuedo selectors, such as ":hover", or for adding another class to a selector, ".like.this". However, it actually does a bit more. the & operator actually calculates the entire parent selector, then places it verbatim wherever it is used.
 			+section('Variables')
 				p One of the features that make SCSS closer to a standard programming language than it is to CSS is the use of variables. Like other languages, variables define a certain value, that is then "injected" to any point in the code when it is called. However, rather than storing a value to be manipulated later, variables are mostly used to keep track of commonly used colors, fonts, etc. to make "theming" a website much easier. Variables in Sass are preceded by a dollar sign ($) and can contain alphanumeric values of dashes.
 				.example

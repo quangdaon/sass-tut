@@ -1,4 +1,717 @@
 /*** NESTING ***/
+.example {
+    display: block;
+    text-align: center;
+}
+
+.example > div {
+    display: inline-block;
+    background: #eee;
+    padding: 0 20px;
+}
+
+.example > div:hover {
+    background: #ddd;
+}
+
+.example .columns {
+    display: inline-block;
+}
+
+.example .columns h5 {
+    margin: 0;
+}
+
+.example .columns div {
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+}
+
+.example pre {
+    text-align: left;
+}
+
 /*** VARIABLES ***/
+body {
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    font-family: "Satisfy", cursive;
+    color: #c6538c;
+}
+
+h4 {
+    font-family: "Satisfy", cursive;
+}
+
+h5 {
+    border-bottom: 1px solid #c6538c;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
+}
+
 /*** MIXINS AND FUNCTIONS ***/
+.button-1 {
+    background: #f00;
+    color: #000000;
+    font-weight: bold;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button-1:hover {
+    background: #e60000;
+}
+
+.button-2 {
+    background: #ff0;
+    color: #000000;
+    font-weight: bold;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button-2:hover {
+    background: #e6e600;
+}
+
+.button-3 {
+    background: #929;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button-3:hover {
+    background: #841d84;
+}
+
 /*** INSANITY ***/
+.insanity {
+    width: 100px;
+    height: 100px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.insanity div {
+    border-radius: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+}
+
+.insanity div:nth-child(1) {
+    background: #ff0b00;
+    -webkit-transform: scale(0.99, 0.99) translateY(-50%) translateX(45%);
+            transform: scale(0.99, 0.99) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(2) {
+    background: #ff1600;
+    -webkit-transform: scale(0.98, 0.98) translateY(-50%) translateX(-45%);
+            transform: scale(0.98, 0.98) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(3) {
+    background: #ff2100;
+    -webkit-transform: scale(0.97, 0.97) translateY(-50%) translateX(45%);
+            transform: scale(0.97, 0.97) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(4) {
+    background: #ff2b00;
+    -webkit-transform: scale(0.96, 0.96) translateY(-50%) translateX(-45%);
+            transform: scale(0.96, 0.96) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(5) {
+    background: #ff3600;
+    -webkit-transform: scale(0.95, 0.95) translateY(-50%) translateX(45%);
+            transform: scale(0.95, 0.95) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(6) {
+    background: #ff4100;
+    -webkit-transform: scale(0.94, 0.94) translateY(-50%) translateX(-45%);
+            transform: scale(0.94, 0.94) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(7) {
+    background: #ff4c00;
+    -webkit-transform: scale(0.93, 0.93) translateY(-50%) translateX(45%);
+            transform: scale(0.93, 0.93) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(8) {
+    background: #ff5700;
+    -webkit-transform: scale(0.92, 0.92) translateY(-50%) translateX(-45%);
+            transform: scale(0.92, 0.92) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(9) {
+    background: #ff6200;
+    -webkit-transform: scale(0.91, 0.91) translateY(-50%) translateX(45%);
+            transform: scale(0.91, 0.91) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(10) {
+    background: #ff6c00;
+    -webkit-transform: scale(0.9, 0.9) translateY(-50%) translateX(-45%);
+            transform: scale(0.9, 0.9) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(11) {
+    background: #ff7700;
+    -webkit-transform: scale(0.89, 0.89) translateY(-50%) translateX(45%);
+            transform: scale(0.89, 0.89) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(12) {
+    background: #ff8200;
+    -webkit-transform: scale(0.88, 0.88) translateY(-50%) translateX(-45%);
+            transform: scale(0.88, 0.88) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(13) {
+    background: #ff8d00;
+    -webkit-transform: scale(0.87, 0.87) translateY(-50%) translateX(45%);
+            transform: scale(0.87, 0.87) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(14) {
+    background: #ff9800;
+    -webkit-transform: scale(0.86, 0.86) translateY(-50%) translateX(-45%);
+            transform: scale(0.86, 0.86) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(15) {
+    background: #ffa300;
+    -webkit-transform: scale(0.85, 0.85) translateY(-50%) translateX(45%);
+            transform: scale(0.85, 0.85) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(16) {
+    background: #ffad00;
+    -webkit-transform: scale(0.84, 0.84) translateY(-50%) translateX(-45%);
+            transform: scale(0.84, 0.84) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(17) {
+    background: #ffb800;
+    -webkit-transform: scale(0.83, 0.83) translateY(-50%) translateX(45%);
+            transform: scale(0.83, 0.83) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(18) {
+    background: #ffc300;
+    -webkit-transform: scale(0.82, 0.82) translateY(-50%) translateX(-45%);
+            transform: scale(0.82, 0.82) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(19) {
+    background: #ffce00;
+    -webkit-transform: scale(0.81, 0.81) translateY(-50%) translateX(45%);
+            transform: scale(0.81, 0.81) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(20) {
+    background: #ffd900;
+    -webkit-transform: scale(0.8, 0.8) translateY(-50%) translateX(-45%);
+            transform: scale(0.8, 0.8) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(21) {
+    background: #ffe400;
+    -webkit-transform: scale(0.79, 0.79) translateY(-50%) translateX(45%);
+            transform: scale(0.79, 0.79) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(22) {
+    background: #ffee00;
+    -webkit-transform: scale(0.78, 0.78) translateY(-50%) translateX(-45%);
+            transform: scale(0.78, 0.78) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(23) {
+    background: #fff900;
+    -webkit-transform: scale(0.77, 0.77) translateY(-50%) translateX(45%);
+            transform: scale(0.77, 0.77) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(24) {
+    background: #faff00;
+    -webkit-transform: scale(0.76, 0.76) translateY(-50%) translateX(-45%);
+            transform: scale(0.76, 0.76) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(25) {
+    background: #efff00;
+    -webkit-transform: scale(0.75, 0.75) translateY(-50%) translateX(45%);
+            transform: scale(0.75, 0.75) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(26) {
+    background: #e4ff00;
+    -webkit-transform: scale(0.74, 0.74) translateY(-50%) translateX(-45%);
+            transform: scale(0.74, 0.74) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(27) {
+    background: #d9ff00;
+    -webkit-transform: scale(0.73, 0.73) translateY(-50%) translateX(45%);
+            transform: scale(0.73, 0.73) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(28) {
+    background: #cfff00;
+    -webkit-transform: scale(0.72, 0.72) translateY(-50%) translateX(-45%);
+            transform: scale(0.72, 0.72) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(29) {
+    background: #c4ff00;
+    -webkit-transform: scale(0.71, 0.71) translateY(-50%) translateX(45%);
+            transform: scale(0.71, 0.71) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(30) {
+    background: #b9ff00;
+    -webkit-transform: scale(0.7, 0.7) translateY(-50%) translateX(-45%);
+            transform: scale(0.7, 0.7) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(31) {
+    background: #aeff00;
+    -webkit-transform: scale(0.69, 0.69) translateY(-50%) translateX(45%);
+            transform: scale(0.69, 0.69) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(32) {
+    background: #a3ff00;
+    -webkit-transform: scale(0.68, 0.68) translateY(-50%) translateX(-45%);
+            transform: scale(0.68, 0.68) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(33) {
+    background: #98ff00;
+    -webkit-transform: scale(0.67, 0.67) translateY(-50%) translateX(45%);
+            transform: scale(0.67, 0.67) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(34) {
+    background: #8eff00;
+    -webkit-transform: scale(0.66, 0.66) translateY(-50%) translateX(-45%);
+            transform: scale(0.66, 0.66) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(35) {
+    background: #83ff00;
+    -webkit-transform: scale(0.65, 0.65) translateY(-50%) translateX(45%);
+            transform: scale(0.65, 0.65) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(36) {
+    background: #78ff00;
+    -webkit-transform: scale(0.64, 0.64) translateY(-50%) translateX(-45%);
+            transform: scale(0.64, 0.64) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(37) {
+    background: #6dff00;
+    -webkit-transform: scale(0.63, 0.63) translateY(-50%) translateX(45%);
+            transform: scale(0.63, 0.63) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(38) {
+    background: #62ff00;
+    -webkit-transform: scale(0.62, 0.62) translateY(-50%) translateX(-45%);
+            transform: scale(0.62, 0.62) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(39) {
+    background: #57ff00;
+    -webkit-transform: scale(0.61, 0.61) translateY(-50%) translateX(45%);
+            transform: scale(0.61, 0.61) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(40) {
+    background: #4dff00;
+    -webkit-transform: scale(0.6, 0.6) translateY(-50%) translateX(-45%);
+            transform: scale(0.6, 0.6) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(41) {
+    background: #42ff00;
+    -webkit-transform: scale(0.59, 0.59) translateY(-50%) translateX(45%);
+            transform: scale(0.59, 0.59) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(42) {
+    background: #37ff00;
+    -webkit-transform: scale(0.58, 0.58) translateY(-50%) translateX(-45%);
+            transform: scale(0.58, 0.58) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(43) {
+    background: #2cff00;
+    -webkit-transform: scale(0.57, 0.57) translateY(-50%) translateX(45%);
+            transform: scale(0.57, 0.57) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(44) {
+    background: #21ff00;
+    -webkit-transform: scale(0.56, 0.56) translateY(-50%) translateX(-45%);
+            transform: scale(0.56, 0.56) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(45) {
+    background: #16ff00;
+    -webkit-transform: scale(0.55, 0.55) translateY(-50%) translateX(45%);
+            transform: scale(0.55, 0.55) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(46) {
+    background: #0bff00;
+    -webkit-transform: scale(0.54, 0.54) translateY(-50%) translateX(-45%);
+            transform: scale(0.54, 0.54) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(47) {
+    background: #01ff00;
+    -webkit-transform: scale(0.53, 0.53) translateY(-50%) translateX(45%);
+            transform: scale(0.53, 0.53) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(48) {
+    background: #00ff0a;
+    -webkit-transform: scale(0.52, 0.52) translateY(-50%) translateX(-45%);
+            transform: scale(0.52, 0.52) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(49) {
+    background: #00ff15;
+    -webkit-transform: scale(0.51, 0.51) translateY(-50%) translateX(45%);
+            transform: scale(0.51, 0.51) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(50) {
+    background: #00ff20;
+    -webkit-transform: scale(0.5, 0.5) translateY(-50%) translateX(-45%);
+            transform: scale(0.5, 0.5) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(51) {
+    background: #00ff2b;
+    -webkit-transform: scale(0.49, 0.49) translateY(-50%) translateX(45%);
+            transform: scale(0.49, 0.49) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(52) {
+    background: #00ff36;
+    -webkit-transform: scale(0.48, 0.48) translateY(-50%) translateX(-45%);
+            transform: scale(0.48, 0.48) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(53) {
+    background: #00ff40;
+    -webkit-transform: scale(0.47, 0.47) translateY(-50%) translateX(45%);
+            transform: scale(0.47, 0.47) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(54) {
+    background: #00ff4b;
+    -webkit-transform: scale(0.46, 0.46) translateY(-50%) translateX(-45%);
+            transform: scale(0.46, 0.46) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(55) {
+    background: #00ff56;
+    -webkit-transform: scale(0.45, 0.45) translateY(-50%) translateX(45%);
+            transform: scale(0.45, 0.45) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(56) {
+    background: #00ff61;
+    -webkit-transform: scale(0.44, 0.44) translateY(-50%) translateX(-45%);
+            transform: scale(0.44, 0.44) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(57) {
+    background: #00ff6c;
+    -webkit-transform: scale(0.43, 0.43) translateY(-50%) translateX(45%);
+            transform: scale(0.43, 0.43) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(58) {
+    background: #00ff77;
+    -webkit-transform: scale(0.42, 0.42) translateY(-50%) translateX(-45%);
+            transform: scale(0.42, 0.42) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(59) {
+    background: #00ff81;
+    -webkit-transform: scale(0.41, 0.41) translateY(-50%) translateX(45%);
+            transform: scale(0.41, 0.41) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(60) {
+    background: #00ff8c;
+    -webkit-transform: scale(0.4, 0.4) translateY(-50%) translateX(-45%);
+            transform: scale(0.4, 0.4) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(61) {
+    background: #00ff97;
+    -webkit-transform: scale(0.39, 0.39) translateY(-50%) translateX(45%);
+            transform: scale(0.39, 0.39) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(62) {
+    background: #00ffa2;
+    -webkit-transform: scale(0.38, 0.38) translateY(-50%) translateX(-45%);
+            transform: scale(0.38, 0.38) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(63) {
+    background: #00ffad;
+    -webkit-transform: scale(0.37, 0.37) translateY(-50%) translateX(45%);
+            transform: scale(0.37, 0.37) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(64) {
+    background: #00ffb8;
+    -webkit-transform: scale(0.36, 0.36) translateY(-50%) translateX(-45%);
+            transform: scale(0.36, 0.36) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(65) {
+    background: #00ffc2;
+    -webkit-transform: scale(0.35, 0.35) translateY(-50%) translateX(45%);
+            transform: scale(0.35, 0.35) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(66) {
+    background: #00ffcd;
+    -webkit-transform: scale(0.34, 0.34) translateY(-50%) translateX(-45%);
+            transform: scale(0.34, 0.34) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(67) {
+    background: #00ffd8;
+    -webkit-transform: scale(0.33, 0.33) translateY(-50%) translateX(45%);
+            transform: scale(0.33, 0.33) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(68) {
+    background: #00ffe3;
+    -webkit-transform: scale(0.32, 0.32) translateY(-50%) translateX(-45%);
+            transform: scale(0.32, 0.32) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(69) {
+    background: #00ffee;
+    -webkit-transform: scale(0.31, 0.31) translateY(-50%) translateX(45%);
+            transform: scale(0.31, 0.31) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(70) {
+    background: #00fff9;
+    -webkit-transform: scale(0.3, 0.3) translateY(-50%) translateX(-45%);
+            transform: scale(0.3, 0.3) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(71) {
+    background: #00fbff;
+    -webkit-transform: scale(0.29, 0.29) translateY(-50%) translateX(45%);
+            transform: scale(0.29, 0.29) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(72) {
+    background: #00f0ff;
+    -webkit-transform: scale(0.28, 0.28) translateY(-50%) translateX(-45%);
+            transform: scale(0.28, 0.28) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(73) {
+    background: #00e5ff;
+    -webkit-transform: scale(0.27, 0.27) translateY(-50%) translateX(45%);
+            transform: scale(0.27, 0.27) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(74) {
+    background: #00daff;
+    -webkit-transform: scale(0.26, 0.26) translateY(-50%) translateX(-45%);
+            transform: scale(0.26, 0.26) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(75) {
+    background: #00cfff;
+    -webkit-transform: scale(0.25, 0.25) translateY(-50%) translateX(45%);
+            transform: scale(0.25, 0.25) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(76) {
+    background: #00c4ff;
+    -webkit-transform: scale(0.24, 0.24) translateY(-50%) translateX(-45%);
+            transform: scale(0.24, 0.24) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(77) {
+    background: #00baff;
+    -webkit-transform: scale(0.23, 0.23) translateY(-50%) translateX(45%);
+            transform: scale(0.23, 0.23) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(78) {
+    background: #00afff;
+    -webkit-transform: scale(0.22, 0.22) translateY(-50%) translateX(-45%);
+            transform: scale(0.22, 0.22) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(79) {
+    background: #00a4ff;
+    -webkit-transform: scale(0.21, 0.21) translateY(-50%) translateX(45%);
+            transform: scale(0.21, 0.21) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(80) {
+    background: #0099ff;
+    -webkit-transform: scale(0.2, 0.2) translateY(-50%) translateX(-45%);
+            transform: scale(0.2, 0.2) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(81) {
+    background: #008eff;
+    -webkit-transform: scale(0.19, 0.19) translateY(-50%) translateX(45%);
+            transform: scale(0.19, 0.19) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(82) {
+    background: #0083ff;
+    -webkit-transform: scale(0.18, 0.18) translateY(-50%) translateX(-45%);
+            transform: scale(0.18, 0.18) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(83) {
+    background: #0078ff;
+    -webkit-transform: scale(0.17, 0.17) translateY(-50%) translateX(45%);
+            transform: scale(0.17, 0.17) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(84) {
+    background: #006eff;
+    -webkit-transform: scale(0.16, 0.16) translateY(-50%) translateX(-45%);
+            transform: scale(0.16, 0.16) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(85) {
+    background: #0063ff;
+    -webkit-transform: scale(0.15, 0.15) translateY(-50%) translateX(45%);
+            transform: scale(0.15, 0.15) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(86) {
+    background: #0058ff;
+    -webkit-transform: scale(0.14, 0.14) translateY(-50%) translateX(-45%);
+            transform: scale(0.14, 0.14) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(87) {
+    background: #004dff;
+    -webkit-transform: scale(0.13, 0.13) translateY(-50%) translateX(45%);
+            transform: scale(0.13, 0.13) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(88) {
+    background: #0042ff;
+    -webkit-transform: scale(0.12, 0.12) translateY(-50%) translateX(-45%);
+            transform: scale(0.12, 0.12) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(89) {
+    background: #0037ff;
+    -webkit-transform: scale(0.11, 0.11) translateY(-50%) translateX(45%);
+            transform: scale(0.11, 0.11) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(90) {
+    background: #002dff;
+    -webkit-transform: scale(0.1, 0.1) translateY(-50%) translateX(-45%);
+            transform: scale(0.1, 0.1) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(91) {
+    background: #0022ff;
+    -webkit-transform: scale(0.09, 0.09) translateY(-50%) translateX(45%);
+            transform: scale(0.09, 0.09) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(92) {
+    background: #0017ff;
+    -webkit-transform: scale(0.08, 0.08) translateY(-50%) translateX(-45%);
+            transform: scale(0.08, 0.08) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(93) {
+    background: #000cff;
+    -webkit-transform: scale(0.07, 0.07) translateY(-50%) translateX(45%);
+            transform: scale(0.07, 0.07) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(94) {
+    background: #0001ff;
+    -webkit-transform: scale(0.06, 0.06) translateY(-50%) translateX(-45%);
+            transform: scale(0.06, 0.06) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(95) {
+    background: #0a00ff;
+    -webkit-transform: scale(0.05, 0.05) translateY(-50%) translateX(45%);
+            transform: scale(0.05, 0.05) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(96) {
+    background: #1400ff;
+    -webkit-transform: scale(0.04, 0.04) translateY(-50%) translateX(-45%);
+            transform: scale(0.04, 0.04) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(97) {
+    background: #1f00ff;
+    -webkit-transform: scale(0.03, 0.03) translateY(-50%) translateX(45%);
+            transform: scale(0.03, 0.03) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(98) {
+    background: #2a00ff;
+    -webkit-transform: scale(0.02, 0.02) translateY(-50%) translateX(-45%);
+            transform: scale(0.02, 0.02) translateY(-50%) translateX(-45%);
+}
+
+.insanity div:nth-child(99) {
+    background: #3500ff;
+    -webkit-transform: scale(0.01, 0.01) translateY(-50%) translateX(45%);
+            transform: scale(0.01, 0.01) translateY(-50%) translateX(45%);
+}
+
+.insanity div:nth-child(100) {
+    background: #4000ff;
+    -webkit-transform: scale(0, 0) translateY(-50%) translateX(-45%);
+            transform: scale(0, 0) translateY(-50%) translateX(-45%);
+}
