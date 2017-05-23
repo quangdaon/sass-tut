@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    padding: 0.5in;
+    padding: 50px;
 }
 
 p {
@@ -15,6 +15,10 @@ pre {
     -moz-tab-size: 4;
       -o-tab-size: 4;
          tab-size: 4;
+}
+
+h4 {
+    font-size: 1.2em;
 }
 
 /*** HEADER ***/
@@ -29,4 +33,20 @@ pre {
     vertical-align: middle;
     max-height: 70px;
     margin: 0 20px;
+}
+
+@media only print {
+    body {
+        padding: 0;
+    }
+    code {
+        font-size: 0.875em;
+    }
+    p a:visited, li a:visited {
+        color: #0000ee;
+    }
+    sup a {
+        color: #000;
+        text-decoration: none;
+    }
 }

@@ -1,2 +1,6 @@
-@import 'components/layout';
-@import 'components/header';
+@import 'base/layout';
+@import 'base/header';
+
+@media only print {
+	@import 'base/print';
+}

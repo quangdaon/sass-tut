@@ -35,7 +35,7 @@ gulp.task('watch', () => {
 		ghostMode: false
 	});
 
-	gulp.watch('src/sass/**/*.scss', ['sass']);
+	gulp.watch('src/sass-final/**/*.scss', ['sass']);
 	gulp.watch('src/views/**/*.pug', ['views']);
 	//gulp.watch('build/**/*.html', sync.reload);
 });

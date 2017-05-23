@@ -161,6 +161,23 @@ html
 					h4 Example 2 - The following buttons are created using mixins.
 					- for(var i = 1; i <= 3; i++)
 						a(href="#", class='button-' + i) Test Button
+				.example.source
+					h4 Source Code
+					div
+						pre
+							code.
+								@mixin button($col) {
+									background: $col;
+									color: setTextColor($col);
+									font-weight: bold;
+									margin: 0 10px;
+									text-decoration: none;
+									padding: 10px 20px;
+									border-radius: 10px;
+									&:hover {
+										background: darken($col, 5%);
+									}
+								}
 			+section('Functions and Directives')
 				p This is where Sass really defines itself as a programming language. Earlier, it was stated that mixins are like functions. However, Sass already has built-in support for actual functions. Mixins and functions serve similar purposes, being to reduce the repetition in your code; however, mixins are primarily used to generate blocks of code, while functions mainly calculate values. In a way, mixins are closer to "document.write()" in JavaScript, while functions are... well, functions.
 				.example
@@ -190,6 +207,17 @@ html
 									}
 				.example
 					h4 Example 2 - See Buttons Above. The text of the colors are determined by a function that checks the brightness of the background.
+				.example.source
+					div
+						pre
+							code.
+								@function setTextColor($color) {
+									@if (lightness($color) >= 50) {
+										@return #000000;
+									} @else {
+										@return #ffffff;
+									}
+								}
 				+sub('Control Directives')
 					p Control directives are simply a fancy name for loops and conditionals. In Sass, one can use "@if" statements to alter a certain value. These directives function similarly to how they would in most programming languages. Due to the extensiveness of these directives, check the references for a link to the official documents instead#[+note(2)].
 					.example
@@ -224,6 +252,35 @@ html
 				.insanity
 					- for(var i = 0; i < 100; i++)
 						div
+				.example.source
+					h4 Source Code
+					p In the Lunch & Learn, we went through how to style 100 divs without needing a hundred separate selectors (although that many is generated into the CSS).
+					div
+						pre
+							code.
+								.insanity {
+									width: 100px;
+									height: 100px;
+									margin: 60px auto 0;
+									position: relative;
+									div {
+										border-radius: 100%;
+										position: absolute;
+										width: 100%;
+										height: 100%;
+										transform-origin: bottom;
+										$sharpness: 100;
+										@for $i from 1 through $sharpness {
+											&:nth-child(#{$i}) {
+												$mod: (($i % 2) * 2) - 1;
+												$h: 255 * ($i / $sharpness);
+												$w: ($sharpness - $i) / $sharpness;
+												background: hsl($h, 100, 50);
+												transform: scale($w, $w) translateY(-50%) translateX(#{$mod * 45 + '%'});
+											}
+										}
+									}
+								}
 			+section('Reminders')
 				ul
 					li Unlike regular CSS, SCSS requires terminating your properties with semicolons.
@@ -233,3 +290,7 @@ html
 					each ref in refs
 						li
 							a(href=ref)=ref
+			//link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css")
+			script(src="./js/highlight.pack.js")
+			script.
+				hljs.initHighlightingOnLoad();

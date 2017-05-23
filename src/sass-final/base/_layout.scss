@@ -1,0 +1,26 @@
+/*** LAYOUT ***/
+html, body {
+	margin: 0;
+}
+
+body {
+	padding: 50px;
+}
+
+p {
+	font-size: 16px;
+}
+
+pre {
+	tab-size: 4;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+@media only screen {
+	.source {
+		//display: none !important;
+	}
+}
