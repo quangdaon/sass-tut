@@ -50,19 +50,3 @@ h4 {
     max-height: 70px;
     margin: 0 20px;
 }
-
-@media only print {
-    body {
-        padding: 0;
-    }
-    code {
-        font-size: 0.875em;
-    }
-    p a:visited, li a:visited {
-        color: #0000ee;
-    }
-    sup a {
-        color: #000;
-        text-decoration: none;
-    }
-}
