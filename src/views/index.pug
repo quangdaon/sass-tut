@@ -7,7 +7,8 @@
 	];
 	var resources = [
 		['https://www.sassmeister.com/', 'Great place to practice.'],
-		['http://sass-lang.com/documentation/file.SASS_REFERENCE.html', 'Official Documentations']
+		['http://sass-lang.com/documentation/file.SASS_REFERENCE.html', 'Official Documentations'],
+		['https://emmet.io/', 'Emmet - An awesome tool for CSS.']
 	]
 
 mixin section(title)
@@ -142,7 +143,6 @@ html
 											}
 										}
 										.columns {
-											display: inline-block;
 											h5 {
 												margin: 0;
 											}
@@ -182,7 +182,7 @@ html
 									}
 				p.pagebreak
 				+sub('Interpolation')
-					p By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated as strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either#[+note(1)].
+					p By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated from strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either#[+note(1)].
 					.example
 						h4 Example
 						.columns
@@ -409,12 +409,12 @@ html
 										transform-origin: bottom;
 										$sharpness: 100;
 										@for $i from 1 through $sharpness {
-											&:nth-child(#{$i}) {
+											&:nth-child(\#{$i}) {
 												$mod: (($i % 2) * 2) - 1;
 												$h: 255 * ($i / $sharpness);
 												$w: ($sharpness - $i) / $sharpness;
 												background: hsl($h, 100, 50);
-												transform: scale($w, $w) translateY(-50%) translateX(#{$mod * 45 + '%'});
+												transform: scale($w, $w) translateY(-50%) translateX(\#{$mod * 45 + '%'});
 											}
 										}
 									}

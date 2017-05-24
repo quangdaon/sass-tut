@@ -62,5 +62,5 @@ typings/
 .idea
 
 # Quangdao's Dev Code
-src/views
 build/css/*.css
+gulpfile.js
