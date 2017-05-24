@@ -63,3 +63,4 @@ typings/
 
 # Quangdao's Dev Code
 build/css/*.css
+gulpfile.js
