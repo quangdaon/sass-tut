@@ -22,9 +22,7 @@ gulp.task('sass', () => {
 
 gulp.task('pug', () => {
 	return gulp.src(`./src/views/**/**/*.pug`)
-		.pipe(pug({
-			pretty: '\t'
-		}))
+		.pipe(pug())
 		.pipe(hljs())
 		.pipe(gulp.dest('./build'))
 		.pipe(sync.stream());
