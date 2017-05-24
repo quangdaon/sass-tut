@@ -7,7 +7,9 @@
 		<link rel="stylesheet" href="./css/training.css">
 	</head>
 	<body>
-		<header class="header"><img src="./img/sass-logo.svg"></header>
+		<header class="header">
+			<h1>Styling with</h1><img src="./img/sass-logo.svg">
+		</header>
 		<div id="main">
 			<section id="history">
 				<h2>History</h2>
@@ -70,8 +72,77 @@ body h3 {
 				<div id="the---operator">
 					<h3>The &amp; Operator</h3>
 					<p>With nesting, Sass introduces a new operator: the ampersand (&). It is a common misconception that the ampersand is used to "extend" the previous selector. To an extent, this is true. For example, nesting "h3" with "&:hover" does generate "h3:hover". This can be useful for psuedo selectors, such as ":hover", or for adding another class to a selector, ".like.this". However, it actually does a bit more. the & operator actually calculates the entire parent selector, then places it verbatim wherever it is used.</p>
+					<p class="pagebreak"></p>
+					<div class="example">
+						<h4>Example</h4>
+						<div class="columns">
+							<div>
+								<h5>Before</h5>
+								<pre><code>a.link {
+	&:hover {
+		color: #f00;
+	}
+	&:active {
+		color: #faa;
+	}
+	& > &:hover + & {
+		&:before, &:after {
+			content: 'Why???';
+		}
+	}
+}</code></pre>
+							</div>
+							<div>
+								<h5>After</h5>
+								<pre><code>a.link:hover {
+	color: #f00;
+}
+
+a.link:active {
+	color: #faa;
+}
+
+a.link > a.link:hover + a.link:before,
+a.link > a.link:hover + a.link:after {
+	content: 'Why???';
+}</code></pre>
+							</div>
+						</div>
+					</div>
+					<div class="example source">
+						<h4>Source Code for Example Boxes</h4>
+						<div>
+							<pre><code>.example {
+	display: block;
+	text-align: center;
+	> div {
+		display: inline-block;
+		background: #eee;
+		padding: 0 20px;
+		&:hover {
+			background: #ddd;
+		}
+	}
+	.columns {
+		display: inline-block;
+		h5 {
+			margin: 0;
+		}
+		div {
+			display: inline-block;
+			margin: 10px;
+			vertical-align: top;
+		}
+	}
+	pre {
+		text-align: left;
+	}
+}</code></pre>
+						</div>
+					</div>
 				</div>
 			</section>
+			<p class="pagebreak"></p>
 			<section id="variables">
 				<h2>Variables</h2>
 				<p>One of the features that make SCSS closer to a standard programming language than it is to CSS is the use of variables. Like other languages, variables define a certain value, that is then "injected" to any point in the code when it is called. However, rather than storing a value to be manipulated later, variables are mostly used to keep track of commonly used colors, fonts, etc. to make "theming" a website much easier. Variables in Sass are preceded by a dollar sign ($) and can contain alphanumeric values of dashes.</p>
@@ -96,6 +167,7 @@ h1 {
 						</div>
 					</div>
 				</div>
+				<p class="pagebreak"></p>
 				<div id="interpolation">
 					<h3>Interpolation</h3>
 					<p>By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated as strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either<sup>[<a href="http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#interpolation_" target="_blank">1</a>]</sup>.
@@ -123,8 +195,23 @@ h1 {
 							</div>
 						</div>
 					</div>
+					<div class="example source">
+						<h4>Source Variables</h4>
+						<div>
+							<pre><code>// Fonts
+$font-1: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-2: "Satisfy", cursive;
+
+// Colors
+$color-1: #c6538c;
+
+// Media Queries
+$smallScreen: 'only screen and (max-width: 767px)';</code></pre>
+						</div>
+					</div>
 				</div>
 			</section>
+			<p class="pagebreak"></p>
 			<section id="mixins">
 				<h2>Mixins</h2>
 				<p>Another useful feature of Sass is mixins. Essentially, a mixin is a block of reusable code that can be used to automatically generate some CSS properties. In a way, mixins are reminiscent of a function in other programming languages. Mixins are defined using the "@mixin" keyword and otherwise works just like a normal CSS selector. They can be called using "@include mixin-name".</p>
@@ -174,6 +261,7 @@ div {
 					</div>
 				</div>
 			</section>
+			<p class="pagebreak"></p>
 			<section id="functions-and-directives">
 				<h2>Functions and Directives</h2>
 				<p>This is where Sass really defines itself as a programming language. Earlier, it was stated that mixins are like functions. However, Sass already has built-in support for actual functions. Mixins and functions serve similar purposes, being to reduce the repetition in your code; however, mixins are primarily used to generate blocks of code, while functions mainly calculate values. In a way, mixins are closer to "document.write()" in JavaScript, while functions are... well, functions.</p>
@@ -250,6 +338,54 @@ p:before {
 					<h3>Built-In Functions</h3>
 					<p>Sass has a variety of pre-made functions. The most helpful ones, in particular, are the color manipulating functions. For example, the function "darken(#f00, 10%)" calculates a new color that is 10% darker than red. A list of the built-in functions can be found in the references<sup>[<a href="http://www.sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">3</a>]</sup>.
 					</p>
+				</div>
+			</section>
+			<p class="pagebreak"></p>
+			<section id="imports">
+				<h2>Imports</h2>
+				<p>Like regular CSS, Sass supports importing other files using the "@import" directive. Unlike CSS, however, upon compilation, the contents of the referenced files are actually pull into the compiled result. In short, the Sass compiler first replaces import statements with the actual content, and <i>then</i> compiles it as a single file. This allows developers to use variables and mixins that are declared in another file, as long as the file containing the variable is imported before the file referencing it.</p>
+				<p>For organization purposes, many developers and teams follow patterns, such the 7-1 Pattern![+notes(4)], where a there's a single core file that imports all other files. SCSS files that are meant to only be used as partials should start with an underscore (_). This prevents the compiling from compiling it as a separate file.</p>
+				<p>Plugin developers for Sass often add the "!default" flag to their configurable variables. This flag stops the variable from being assigned if it already exists. The benefit of doing this is so users of the plugin won't have to manipulate the vendor file itself, keeping it clean in case updates are needed.</p>
+				<div class="example">
+					<h4>Example</h4>
+					<div class="columns">
+						<div>
+							<h5>File: main.scss</h5>
+							<pre><code>$plugin-color: tomato;
+$nondefault: red;
+
+p {
+	background: $plugin-color;
+	color: $nondefault;
+}
+
+@import 'vendor/plugin';</code></pre>
+						</div>
+						<div>
+							<h5>File: vendor/_plugin.scss</h5>
+							<pre><code>$plugin-color: orange !default;
+$nondefault: purple;
+
+* {
+	background: $plugin-color;
+	color: $nondefault;
+}</code></pre>
+						</div>
+					</div>
+				</div>
+				<div class="example">
+					<h4>Results</h4>
+					<div>
+						<pre><code>p {
+	background: tomato;
+	color: red;
+}
+
+* {
+	background: tomato;
+	color: purple;
+}</code></pre>
+					</div>
 				</div>
 			</section>
 			<section id="let-s-get-crazy">
@@ -387,6 +523,7 @@ p:before {
 					</div>
 				</div>
 			</section>
+			<p class="pagebreak"></p>
 			<section id="reminders">
 				<h2>Reminders</h2>
 				<ul>
@@ -400,9 +537,16 @@ p:before {
 					<li><a href="http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#interpolation_">http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#interpolation_</a></li>
 					<li><a href="http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#control_directives__expressions">http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#control_directives__expressions</a></li>
 					<li><a href="http://www.sass-lang.com/documentation/Sass/Script/Functions.html">http://www.sass-lang.com/documentation/Sass/Script/Functions.html</a></li>
+					<li><a href="https://sass-guidelin.es/#the-7-1-pattern">https://sass-guidelin.es/#the-7-1-pattern</a></li>
 				</ol>
 			</section>
-			<!--link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css")-->
+			<section id="resources">
+				<h2>Resources</h2>
+				<ul>
+					<li><a href="https://www.sassmeister.com/">https://www.sassmeister.com/</a> - Great place to practice.</li>
+					<li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">http://sass-lang.com/documentation/file.SASS_REFERENCE.html</a> - Official Documentations</li>
+				</ul>
+			</section>
 			<script src="./js/highlight.pack.js"></script>
 			<script>hljs.initHighlightingOnLoad();</script>
 		</div>

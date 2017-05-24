@@ -3,9 +3,14 @@
 	text-align: center;
 	border-bottom: 5px solid #000;
 	padding-bottom: 10px;
+	h1 {
+		display: inline-block;
+		margin: 0;
+		font-size: 3em;
+	}
 	img {
 		display: inline-block;
-		vertical-align: middle;
+		vertical-align: baseline;
 		max-height: 70px;
 		margin: 0 20px;
 	}
