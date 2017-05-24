@@ -1,10 +1,15 @@
 const gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	prefix = require('gulp-autoprefixer'),
+	pug = require('gulp-pug'),
+	hljs = require('gulp-highlight'),
 	sync = require('browser-sync');
 
+const isDev = process.env.NODE_ENV === 'development';
+
 gulp.task('sass', () => {
-	return gulp.src('./src/sass/**/**/*.scss')
+	const src = isDev ? 'sass-final' : 'sass';
+	return gulp.src(`./src/${src}/**/**/*.scss`)
 		.pipe(sass({
 			outputStyle: 'expanded',
 			indentType: 'space',
@@ -12,6 +17,16 @@ gulp.task('sass', () => {
 		}).on('error', sass.logError))
 		.pipe(prefix())
 		.pipe(gulp.dest('./build/css'))
+		.pipe(sync.stream());
+});
+
+gulp.task('pug', () => {
+	return gulp.src(`./src/views/**/**/*.pug`)
+		.pipe(pug({
+			pretty: '\t'
+		}))
+		.pipe(hljs())
+		.pipe(gulp.dest('./build'))
 		.pipe(sync.stream());
 });
 
@@ -25,8 +40,15 @@ gulp.task('watch', () => {
 		ghostMode: false
 	});
 
-	gulp.watch('src/sass/**/*.scss', ['sass']);
-	gulp.watch('build/**/*.html', sync.reload);
+	if (isDev) {
+		gulp.watch('src/sass-final/**/*.scss', ['sass']);
+		gulp.watch('src/views/**/*.pug', ['pug']);
+	} else {
+		gulp.watch('src/sass/**/*.scss', ['sass']);
+		gulp.watch('build/**/*.html', sync.reload);
+	}
 });
 
-gulp.task('default', ['sass', 'watch']);
+const defs = isDev ? ['pug', 'sass', 'watch'] : ['sass', 'watch'];
+
+gulp.task('default', defs);

@@ -60,7 +60,4 @@ typings/
 .env
 
 .idea
-
-# Quangdao's Dev Code
 build/css/*.css
-gulpfile.js

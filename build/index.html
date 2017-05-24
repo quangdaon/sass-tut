@@ -19,10 +19,10 @@
 					<div class="example">
 						<h4>Example</h4>
 						<div>
-							<pre><code>body
-	color: red
-	h3
-		font-size: 122em</code></pre>
+							<pre><code class="hljs"><span class="hljs-selector-tag">body</span>
+	<span class="hljs-attribute">color</span>: red
+	<span class="hljs-selector-tag">h3</span>
+		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">122em</span></code></pre>
 						</div>
 					</div>
 				</div>
@@ -32,10 +32,10 @@
 					<div class="example">
 						<h4>Example</h4>
 						<div>
-							<pre><code>body {
-	color: red;
-	h3 {
-		font-size: 122em;
+							<pre><code class="hljs"><span class="hljs-selector-tag">body</span> {
+	<span class="hljs-attribute">color</span>: red;
+	<span class="hljs-selector-tag">h3</span> {
+		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">122em</span>;
 	}
 }</code></pre>
 						</div>
@@ -50,21 +50,21 @@
 					<div class="columns">
 						<div>
 							<h5>Before</h5>
-							<pre><code>body {
-	font-size: 3px;
-	h3 {
-		color: red;
+							<pre><code class="hljs"><span class="hljs-selector-tag">body</span> {
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">3px</span>;
+	<span class="hljs-selector-tag">h3</span> {
+		<span class="hljs-attribute">color</span>: red;
 	}
 }</code></pre>
 						</div>
 						<div>
 							<h5>After</h5>
-							<pre><code>body {
-	font-size: 3px;
+							<pre><code class="hljs"><span class="hljs-selector-tag">body</span> {
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">3px</span>;
 }
 
-body h3 {
-	color: red;
+<span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">h3</span> {
+	<span class="hljs-attribute">color</span>: red;
 }</code></pre>
 						</div>
 					</div>
@@ -72,39 +72,38 @@ body h3 {
 				<div id="the---operator">
 					<h3>The &amp; Operator</h3>
 					<p>With nesting, Sass introduces a new operator: the ampersand (&). It is a common misconception that the ampersand is used to "extend" the previous selector. To an extent, this is true. For example, nesting "h3" with "&:hover" does generate "h3:hover". This can be useful for psuedo selectors, such as ":hover", or for adding another class to a selector, ".like.this". However, it actually does a bit more. the & operator actually calculates the entire parent selector, then places it verbatim wherever it is used.</p>
-					<p class="pagebreak"></p>
 					<div class="example">
 						<h4>Example</h4>
 						<div class="columns">
 							<div>
 								<h5>Before</h5>
-								<pre><code>a.link {
-	&:hover {
-		color: #f00;
+								<pre><code class="hljs"><span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span> {
+	&amp;:hover {
+		<span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
 	}
-	&:active {
-		color: #faa;
+	&amp;:active {
+		<span class="hljs-attribute">color</span>: <span class="hljs-number">#faa</span>;
 	}
-	& > &:hover + & {
-		&:before, &:after {
-			content: 'Why???';
+	&amp; &gt; &amp;:hover + &amp; {
+		&amp;:before, &amp;:after {
+			<span class="hljs-attribute">content</span>: <span class="hljs-string">'Why???'</span>;
 		}
 	}
 }</code></pre>
 							</div>
 							<div>
 								<h5>After</h5>
-								<pre><code>a.link:hover {
-	color: #f00;
+								<pre><code class="hljs"><span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:hover {
+	<span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
 }
 
-a.link:active {
-	color: #faa;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:active {
+	<span class="hljs-attribute">color</span>: <span class="hljs-number">#faa</span>;
 }
 
-a.link > a.link:hover + a.link:before,
-a.link > a.link:hover + a.link:after {
-	content: 'Why???';
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span> &gt; <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:hover + <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:before,
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span> &gt; <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:hover + <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.link</span>:after {
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">'Why???'</span>;
 }</code></pre>
 							</div>
 						</div>
@@ -112,36 +111,64 @@ a.link > a.link:hover + a.link:after {
 					<div class="example source">
 						<h4>Source Code for Example Boxes</h4>
 						<div>
-							<pre><code>.example {
-	display: block;
-	text-align: center;
-	> div {
-		display: inline-block;
-		background: #eee;
-		padding: 0 20px;
-		&:hover {
-			background: #ddd;
+							<pre><code class="hljs"><span class="hljs-selector-class">.example</span> {
+	<span class="hljs-attribute">display</span>: block;
+	<span class="hljs-attribute">text-align</span>: center;
+	&gt; <span class="hljs-selector-tag">div</span> {
+		<span class="hljs-attribute">display</span>: inline-block;
+		<span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
+		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">20px</span>;
+		&amp;:hover {
+			<span class="hljs-attribute">background</span>: {
+				image: url(<span class="hljs-string">'/img/bg.jpg'</span>);
+				size: <span class="hljs-number">100%</span>;
+				repeat: no-repeat;
+			};
 		}
 	}
-	.columns {
-		h5 {
-			margin: 0;
-		}
-		div {
-			display: inline-block;
-			margin: 10px;
-			vertical-align: top;
+	<span class="hljs-selector-class">.columns</span> {
+		<span class="hljs-attribute">display</span>: inline-block;
+		<span class="hljs-selector-tag">div</span> {
+			<span class="hljs-attribute">display</span>: inline-block;
+			<span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+			<span class="hljs-attribute">vertical-align</span>: top;
 		}
 	}
-	pre {
-		text-align: left;
+	<span class="hljs-selector-tag">pre</span> {
+		<span class="hljs-attribute">text-align</span>: left;
 	}
 }</code></pre>
 						</div>
 					</div>
 				</div>
+				<div id="nesting-properties">
+					<h3>Nesting Properties</h3>
+					<p>One of the neat little features that puts Sass over some of its competitors is the ability to nest properties. Properties that share a prefix can be nested for convenience, and to save time from repetitive typing. It works similarly to nesting selectors, and is especially useful for properties without CSS shorthands.</p>
+					<div class="example">
+						<h4>Example</h4>
+						<div class="columns">
+							<div>
+								<h5>Before</h5>
+								<pre><code class="hljs"><span class="hljs-selector-tag">p</span> {
+	<span class="hljs-attribute">text</span>: {
+		align: left;
+		<span class="hljs-attribute">decoration</span>: underline;
+	}
+}</code></pre>
+							</div>
+							<div>
+								<h5>After</h5>
+								<pre><code class="hljs"><span class="hljs-selector-tag">p</span> {
+	<span class="hljs-attribute">text</span>: {
+		align: left;
+		<span class="hljs-attribute">decoration</span>: underline;
+	}
+}</code></pre>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
-			<p class="pagebreak"></p>
 			<section id="variables">
 				<h2>Variables</h2>
 				<p>One of the features that make SCSS closer to a standard programming language than it is to CSS is the use of variables. Like other languages, variables define a certain value, that is then "injected" to any point in the code when it is called. However, rather than storing a value to be manipulated later, variables are mostly used to keep track of commonly used colors, fonts, etc. to make "theming" a website much easier. Variables in Sass are preceded by a dollar sign ($) and can contain alphanumeric values of dashes.</p>
@@ -150,23 +177,22 @@ a.link > a.link:hover + a.link:after {
 					<div class="columns">
 						<div>
 							<h5>Before</h5>
-							<pre><code>$color: red;
+							<pre><code class="hljs"><span class="hljs-variable">$color</span>: red;
 
-h1 {
-	color: $color;
-	border: 1px solid $color;
+<span class="hljs-selector-tag">h1</span> {
+	<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color</span>;
+	<span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$color</span>;
 }</code></pre>
 						</div>
 						<div>
 							<h5>After</h5>
-							<pre><code>h1 {
-	color: red;
-	border: 1px solid red;
+							<pre><code class="hljs"><span class="hljs-selector-tag">h1</span> {
+	<span class="hljs-attribute">color</span>: red;
+	<span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;
 }</code></pre>
 						</div>
 					</div>
 				</div>
-				<p class="pagebreak"></p>
 				<div id="interpolation">
 					<h3>Interpolation</h3>
 					<p>By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated from strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either<sup>[<a href="http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#interpolation_" target="_blank">1</a>]</sup>.
@@ -176,19 +202,19 @@ h1 {
 						<div class="columns">
 							<div>
 								<h5>Before</h5>
-								<pre><code>$smallScreen: 'only screen and (max-width: 767px)';
+								<pre><code class="hljs"><span class="hljs-variable">$smallScreen</span>: <span class="hljs-string">'only screen and (max-width: 767px)'</span>;
 
-@media #{$smallScreen} {
-	h3 {
-		color: tomato;
+@<span class="hljs-keyword">media</span> #{<span class="hljs-variable">$smallScreen</span>} {
+	<span class="hljs-selector-tag">h3</span> {
+		<span class="hljs-attribute">color</span>: tomato;
 	}
 }</code></pre>
 							</div>
 							<div>
 								<h5>After</h5>
-								<pre><code>@media only screen and (max-width: 767px) {
-	h3 {
-		color: tomato;
+								<pre><code class="hljs">@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">767px</span>) {
+	<span class="hljs-selector-tag">h3</span> {
+		<span class="hljs-attribute">color</span>: tomato;
 	}
 }</code></pre>
 							</div>
@@ -197,20 +223,19 @@ h1 {
 					<div class="example source">
 						<h4>Source Variables</h4>
 						<div>
-							<pre><code>// Fonts
-$font-1: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-2: "Satisfy", cursive;
+							<pre><code class="hljs"><span class="hljs-comment">// Fonts</span>
+<span class="hljs-variable">$font-1</span>: <span class="hljs-string">"Source Sans Pro"</span>, <span class="hljs-string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;
+<span class="hljs-variable">$font-2</span>: <span class="hljs-string">"Satisfy"</span>, cursive;
 
-// Colors
-$color-1: #c6538c;
+<span class="hljs-comment">// Colors</span>
+<span class="hljs-variable">$color-1</span>: <span class="hljs-number">#c6538c</span>;
 
-// Media Queries
-$smallScreen: 'only screen and (max-width: 767px)';</code></pre>
+<span class="hljs-comment">// Media Queries</span>
+<span class="hljs-variable">$smallScreen</span>: <span class="hljs-string">'only screen and (max-width: 767px)'</span>;</code></pre>
 						</div>
 					</div>
 				</div>
 			</section>
-			<p class="pagebreak"></p>
 			<section id="mixins">
 				<h2>Mixins</h2>
 				<p>Another useful feature of Sass is mixins. Essentially, a mixin is a block of reusable code that can be used to automatically generate some CSS properties. In a way, mixins are reminiscent of a function in other programming languages. Mixins are defined using the "@mixin" keyword and otherwise works just like a normal CSS selector. They can be called using "@include mixin-name".</p>
@@ -219,22 +244,22 @@ $smallScreen: 'only screen and (max-width: 767px)';</code></pre>
 					<div class="columns">
 						<div>
 							<h5>Before</h5>
-							<pre><code>@mixin humongous {
-	font-size: 1000px;
-	width: 1000px;
-	height: 1000px;
+							<pre><code class="hljs">@<span class="hljs-keyword">mixin</span> humongous {
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1000px</span>;
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">1000px</span>;
 }
 
-div {
-	@include humongous;
+<span class="hljs-selector-tag">div</span> {
+	@<span class="hljs-keyword">include</span> humongous;
 }</code></pre>
 						</div>
 						<div>
 							<h5>After</h5>
-							<pre><code>div {
-	font-size: 1000px;
-	width: 1000px;
-	height: 1000px;
+							<pre><code class="hljs"><span class="hljs-selector-tag">div</span> {
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1000px</span>;
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">1000px</span>;
 }</code></pre>
 						</div>
 					</div>
@@ -245,46 +270,45 @@ div {
 				<div class="example source">
 					<h4>Source Code</h4>
 					<div>
-						<pre><code>@mixin button($col) {
-	background: $col;
-	color: setTextColor($col);
-	font-weight: bold;
-	margin: 0 10px;
-	text-decoration: none;
-	padding: 10px 20px;
-	border-radius: 10px;
-	&:hover {
-		background: darken($col, 5%);
+						<pre><code class="hljs">@<span class="hljs-keyword">mixin</span> button(<span class="hljs-variable">$col</span>) {
+	<span class="hljs-attribute">background</span>: <span class="hljs-variable">$col</span>;
+	<span class="hljs-attribute">color</span>: setTextColor(<span class="hljs-variable">$col</span>);
+	<span class="hljs-attribute">font-weight</span>: bold;
+	<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;
+	<span class="hljs-attribute">text-decoration</span>: none;
+	<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;
+	<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;
+	&amp;:hover {
+		<span class="hljs-attribute">background</span>: darken(<span class="hljs-variable">$col</span>, <span class="hljs-number">5%</span>);
 	}
 }</code></pre>
 					</div>
 				</div>
 			</section>
-			<p class="pagebreak"></p>
 			<section id="functions-and-directives">
 				<h2>Functions and Directives</h2>
 				<p>This is where Sass really defines itself as a programming language. Earlier, it was stated that mixins are like functions. However, Sass already has built-in support for actual functions. Mixins and functions serve similar purposes, being to reduce the repetition in your code; however, mixins are primarily used to generate blocks of code, while functions mainly calculate values. In a way, mixins are closer to "document.write()" in JavaScript, while functions are... well, functions.</p>
 				<div class="example">
-					<h4>Example from Official Docs</h4>
+					<h4>Example</h4>
 					<div class="columns">
 						<div>
 							<h5>Before</h5>
-							<pre><code>@function returnOneIfOneAndEighteenIfNot($in) {
-	@if($in = 1) {
-		@return 1;
-	} @else {
-		@return 'eighteen';
+							<pre><code class="hljs"><span class="hljs-variable">@function</span> returnOneIfOneAndEighteenIfNot($in) {
+	<span class="hljs-variable">@if</span>($in = <span class="hljs-number">1</span>) {
+		<span class="hljs-variable">@return</span> <span class="hljs-number">1</span>;
+	} <span class="hljs-variable">@else</span> {
+		<span class="hljs-variable">@return</span> <span class="hljs-string">'eighteen'</span>;
 	}
 }
 
-p:before {
-	content: returnOneIfOneAndEighteenIfNot(42);
+<span class="hljs-attribute">p</span>:before {
+	<span class="hljs-attribute">content</span>: returnOneIfOneAndEighteenIfNot(<span class="hljs-number">42</span>);
 }</code></pre>
 						</div>
 						<div>
 							<h5>After</h5>
-							<pre><code>p:before {
-	content: 'eighteen';
+							<pre><code class="hljs"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:before</span> {
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">'eighteen'</span>;
 }</code></pre>
 						</div>
 					</div>
@@ -294,11 +318,11 @@ p:before {
 				</div>
 				<div class="example source">
 					<div>
-						<pre><code>@function setTextColor($color) {
-	@if (lightness($color) >= 50) {
-		@return #000000;
-	} @else {
-		@return #ffffff;
+						<pre><code class="hljs"><span class="hljs-variable">@function</span> setTextColor($color) {
+	<span class="hljs-variable">@if</span> (lightness($color) &gt;= <span class="hljs-number">50</span>) {
+		<span class="hljs-variable">@return</span> <span class="hljs-number">#000000</span>;
+	} <span class="hljs-variable">@else</span> {
+		<span class="hljs-variable">@return</span> <span class="hljs-number">#ffffff</span>;
 	}
 }</code></pre>
 					</div>
@@ -312,22 +336,22 @@ p:before {
 						<div class="columns">
 							<div>
 								<h5>Before</h5>
-								<pre><code>@for $i from 1 through 3 {
-	.item-#{$i} { width: 2em * $i; }
+								<pre><code class="hljs">@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 3 {
+	<span class="hljs-selector-class">.item-</span>#{<span class="hljs-variable">$i</span>} { <span class="hljs-attribute">width</span>: <span class="hljs-number">2em</span> * <span class="hljs-variable">$i</span>; }
 }</code></pre>
 							</div>
 							<div>
 								<h5>After</h5>
-								<pre><code>.item-1 {
-	width: 2em;
+								<pre><code class="hljs"><span class="hljs-selector-class">.item-1</span> {
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">2em</span>;
 }
 
-.item-2 {
-	width: 4em;
+<span class="hljs-selector-class">.item-2</span> {
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">4em</span>;
 }
 
-.item-3 {
-	width: 6em;
+<span class="hljs-selector-class">.item-3</span> {
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">6em</span>;
 }</code></pre>
 							</div>
 						</div>
@@ -339,35 +363,88 @@ p:before {
 					</p>
 				</div>
 			</section>
-			<p class="pagebreak"></p>
+			<section id="inheritance">
+				<h2>Inheritance</h2>
+				<p>Another way Sass helps to reduce code is through the use of "@extends" and "%placeholders". Basically, these commands tell the compiler, "hey, by default, treat <i>this</i> selector as <i>that</i> selector." When used with placeholders (which are similar to mixins in that they are blocks of styles that are rendered into the final CSS) extends function very similarly to mixins. Because of this, use cases for placeholders and extends are very limited.</p>
+				<p>The difference, however, is that instead of duplicating the code, it instead <i>extends</i> the chosen selector with a comma, indicating that they share the same set of styles. This is beneficial for creating similar elements that all share common traits, whereas mixins are bits of code to be reused across a span of elements. Realistically, the button example above should be using extends; however, the use case for them is so limited that many developers are just more confortable substituting them with mixins.</p>
+				<div class="example">
+					<h4>Example</h4>
+					<div class="columns">
+						<div>
+							<h5>Before</h5>
+							<pre><code class="hljs">%myplaceholder {
+	<span class="hljs-attribute">display</span>: block;
+	<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1020px</span>;
+	<span class="hljs-attribute">margin</span>: auto;
+}
+
+<span class="hljs-selector-class">.mydiv</span> {
+	@<span class="hljs-keyword">extend</span> %myplaceholder;
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.yourdiv</span> {
+	@<span class="hljs-keyword">extend</span> %myplaceholder;
+	<span class="hljs-attribute">background</span>: green;
+}
+
+<span class="hljs-selector-class">.theirdiv</span> {
+	@<span class="hljs-keyword">extend</span> .yourdiv;
+	<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+}</code></pre>
+						</div>
+						<div>
+							<h5>After</h5>
+							<pre><code class="hljs"><span class="hljs-selector-class">.mydiv</span>, <span class="hljs-selector-class">.yourdiv</span>, <span class="hljs-selector-class">.theirdiv</span> {
+	<span class="hljs-attribute">display</span>: block;
+	<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1020px</span>;
+	<span class="hljs-attribute">margin</span>: auto;
+}
+
+<span class="hljs-selector-class">.mydiv</span> {
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.yourdiv</span>, <span class="hljs-selector-class">.theirdiv</span> {
+	<span class="hljs-attribute">background</span>: green;
+}
+
+<span class="hljs-selector-class">.theirdiv</span> {
+	<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section id="imports">
 				<h2>Imports</h2>
 				<p>Like regular CSS, Sass supports importing other files using the "@import" directive. Unlike CSS, however, upon compilation, the contents of the referenced files are actually pull into the compiled result. In short, the Sass compiler first replaces import statements with the actual content, and <i>then</i> compiles it as a single file. This allows developers to use variables and mixins that are declared in another file, as long as the file containing the variable is imported before the file referencing it.</p>
-				<p>For organization purposes, many developers and teams follow patterns, such the 7-1 Pattern![+notes(4)], where a there's a single core file that imports all other files. SCSS files that are meant to only be used as partials should start with an underscore (_). This prevents the compiling from compiling it as a separate file.</p>
+				<p>For organization purposes, many developers and teams follow patterns, such the 7-1 Pattern<sup>[<a href="https://sass-guidelin.es/#the-7-1-pattern" target="_blank">4</a>]</sup>, where a there's a single core file that imports all other files. SCSS files that are meant to only be used as partials should start with an underscore (_). This prevents the compiling from compiling it as a separate file.
+				</p>
 				<p>Plugin developers for Sass often add the "!default" flag to their configurable variables. This flag stops the variable from being assigned if it already exists. The benefit of doing this is so users of the plugin won't have to manipulate the vendor file itself, keeping it clean in case updates are needed.</p>
 				<div class="example">
 					<h4>Example</h4>
 					<div class="columns">
 						<div>
 							<h5>File: main.scss</h5>
-							<pre><code>$plugin-color: tomato;
-$nondefault: red;
+							<pre><code class="hljs"><span class="hljs-variable">$plugin-color</span>: tomato;
+<span class="hljs-variable">$nondefault</span>: red;
 
-p {
-	background: $plugin-color;
-	color: $nondefault;
+<span class="hljs-selector-tag">p</span> {
+	<span class="hljs-attribute">background</span>: <span class="hljs-variable">$plugin-color</span>;
+	<span class="hljs-attribute">color</span>: <span class="hljs-variable">$nondefault</span>;
 }
 
-@import 'vendor/plugin';</code></pre>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vendor/plugin'</span>;</code></pre>
 						</div>
 						<div>
 							<h5>File: vendor/_plugin.scss</h5>
-							<pre><code>$plugin-color: orange !default;
-$nondefault: purple;
+							<pre><code class="hljs"><span class="hljs-variable">$plugin-color</span>: orange !default;
+<span class="hljs-variable">$nondefault</span>: purple;
 
 * {
-	background: $plugin-color;
-	color: $nondefault;
+	<span class="hljs-attribute">background</span>: <span class="hljs-variable">$plugin-color</span>;
+	<span class="hljs-attribute">color</span>: <span class="hljs-variable">$nondefault</span>;
 }</code></pre>
 						</div>
 					</div>
@@ -375,14 +452,14 @@ $nondefault: purple;
 				<div class="example">
 					<h4>Results</h4>
 					<div>
-						<pre><code>p {
-	background: tomato;
-	color: red;
+						<pre><code class="hljs"><span class="hljs-selector-tag">p</span> {
+	<span class="hljs-attribute">background</span>: tomato;
+	<span class="hljs-attribute">color</span>: red;
 }
 
 * {
-	background: tomato;
-	color: purple;
+	<span class="hljs-attribute">background</span>: tomato;
+	<span class="hljs-attribute">color</span>: purple;
 }</code></pre>
 					</div>
 				</div>
@@ -496,25 +573,25 @@ $nondefault: purple;
 					<h4>Source Code</h4>
 					<p>In the Lunch & Learn, we went through how to style 100 divs without needing a hundred separate selectors (although that many is generated into the CSS).</p>
 					<div>
-						<pre><code>.insanity {
-	width: 100px;
-	height: 100px;
-	margin: 60px auto 0;
-	position: relative;
-	div {
-		border-radius: 100%;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		transform-origin: bottom;
-		$sharpness: 100;
-		@for $i from 1 through $sharpness {
-			&:nth-child(#{$i}) {
-				$mod: (($i % 2) * 2) - 1;
-				$h: 255 * ($i / $sharpness);
-				$w: ($sharpness - $i) / $sharpness;
-				background: hsl($h, 100, 50);
-				transform: scale($w, $w) translateY(-50%) translateX(#{$mod * 45 + '%'});
+						<pre><code class="hljs"><span class="hljs-selector-class">.insanity</span> {
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+	<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+	<span class="hljs-attribute">margin</span>: <span class="hljs-number">60px</span> auto <span class="hljs-number">0</span>;
+	<span class="hljs-attribute">position</span>: relative;
+	<span class="hljs-selector-tag">div</span> {
+		<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">position</span>: absolute;
+		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">transform-origin</span>: bottom;
+		<span class="hljs-variable">$sharpness</span>: <span class="hljs-number">100</span>;
+		@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through <span class="hljs-variable">$sharpness</span> {
+			&amp;:nth-child(#{<span class="hljs-variable">$i</span>}) {
+				<span class="hljs-variable">$mod</span>: ((<span class="hljs-variable">$i</span> % <span class="hljs-number">2</span>) * <span class="hljs-number">2</span>) - <span class="hljs-number">1</span>;
+				<span class="hljs-variable">$h</span>: <span class="hljs-number">255</span> * (<span class="hljs-variable">$i</span> / <span class="hljs-variable">$sharpness</span>);
+				<span class="hljs-variable">$w</span>: (<span class="hljs-variable">$sharpness</span> - <span class="hljs-variable">$i</span>) / <span class="hljs-variable">$sharpness</span>;
+				<span class="hljs-attribute">background</span>: hsl(<span class="hljs-variable">$h</span>, <span class="hljs-number">100</span>, <span class="hljs-number">50</span>);
+				<span class="hljs-attribute">transform</span>: scale(<span class="hljs-variable">$w</span>, <span class="hljs-variable">$w</span>) translateY(-<span class="hljs-number">50%</span>) translateX(#{<span class="hljs-variable">$mod</span> * <span class="hljs-number">45</span> + <span class="hljs-string">'%'</span>});
 			}
 		}
 	}
@@ -522,7 +599,6 @@ $nondefault: purple;
 					</div>
 				</div>
 			</section>
-			<p class="pagebreak"></p>
 			<section id="reminders">
 				<h2>Reminders</h2>
 				<ul>
@@ -547,8 +623,6 @@ $nondefault: purple;
 					<li><a href="https://emmet.io/">https://emmet.io/</a> - Emmet - An awesome tool for CSS.</li>
 				</ul>
 			</section>
-			<script src="./js/highlight.pack.js"></script>
-			<script>hljs.initHighlightingOnLoad();</script>
 		</div>
 	</body>
 </html>

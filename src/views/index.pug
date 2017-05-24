@@ -89,7 +89,6 @@ html
 									}
 				+sub('The & Operator')
 					p With nesting, Sass introduces a new operator: the ampersand (&). It is a common misconception that the ampersand is used to "extend" the previous selector. To an extent, this is true. For example, nesting "h3" with "&:hover" does generate "h3:hover". This can be useful for psuedo selectors, such as ":hover", or for adding another class to a selector, ".like.this". However, it actually does a bit more. the & operator actually calculates the entire parent selector, then places it verbatim wherever it is used.
-					p.pagebreak
 					.example
 						h4 Example
 						.columns
@@ -139,13 +138,15 @@ html
 											background: #eee;
 											padding: 0 20px;
 											&:hover {
-												background: #ddd;
+												background: {
+													image: url('/img/bg.jpg');
+													size: 100%;
+													repeat: no-repeat;
+												};
 											}
 										}
 										.columns {
-											h5 {
-												margin: 0;
-											}
+											display: inline-block;
 											div {
 												display: inline-block;
 												margin: 10px;
@@ -156,7 +157,31 @@ html
 											text-align: left;
 										}
 									}
-			p.pagebreak
+				+sub('Nesting Properties')
+					p One of the neat little features that puts Sass over some of its competitors is the ability to nest properties. Properties that share a prefix can be nested for convenience, and to save time from repetitive typing. It works similarly to nesting selectors, and is especially useful for properties without CSS shorthands.
+					.example
+						h4 Example
+						.columns
+							div
+								h5 Before
+								pre
+									code.
+										p {
+											text: {
+												align: left;
+												decoration: underline;
+											}
+										}
+							div
+								h5 After
+								pre
+									code.
+										p {
+											text: {
+												align: left;
+												decoration: underline;
+											}
+										}
 			+section('Variables')
 				p One of the features that make SCSS closer to a standard programming language than it is to CSS is the use of variables. Like other languages, variables define a certain value, that is then "injected" to any point in the code when it is called. However, rather than storing a value to be manipulated later, variables are mostly used to keep track of commonly used colors, fonts, etc. to make "theming" a website much easier. Variables in Sass are preceded by a dollar sign ($) and can contain alphanumeric values of dashes.
 				.example
@@ -180,7 +205,6 @@ html
 										color: red;
 										border: 1px solid red;
 									}
-				p.pagebreak
 				+sub('Interpolation')
 					p By default, Sass variables be only be used as values to CSS properties. But when needed, they can also be interpolated from strings. This is especially useful if you want to store a certain selector. For example, modern Graydient websites use variables to store our media queries for different screen sizes. NOTE: Please don't ask Quangdao to explain this section. He doesn't fully understand it either#[+note(1)].
 					.example
@@ -220,7 +244,6 @@ html
 
 									// Media Queries
 									$smallScreen: 'only screen and (max-width: 767px)';
-			p.pagebreak
 			+section('Mixins')
 				p Another useful feature of Sass is mixins. Essentially, a mixin is a block of reusable code that can be used to automatically generate some CSS properties. In a way, mixins are reminiscent of a function in other programming languages. Mixins are defined using the "@mixin" keyword and otherwise works just like a normal CSS selector. They can be called using "@include mixin-name".
 				.example
@@ -269,11 +292,10 @@ html
 										background: darken($col, 5%);
 									}
 								}
-			p.pagebreak
 			+section('Functions and Directives')
 				p This is where Sass really defines itself as a programming language. Earlier, it was stated that mixins are like functions. However, Sass already has built-in support for actual functions. Mixins and functions serve similar purposes, being to reduce the repetition in your code; however, mixins are primarily used to generate blocks of code, while functions mainly calculate values. In a way, mixins are closer to "document.write()" in JavaScript, while functions are... well, functions.
 				.example
-					h4 Example from Official Docs
+					h4 Example
 					.columns
 						div
 							h5 Before
@@ -339,10 +361,60 @@ html
 										}
 				+sub('Built-In Functions')
 					p Sass has a variety of pre-made functions. The most helpful ones, in particular, are the color manipulating functions. For example, the function "darken(#f00, 10%)" calculates a new color that is 10% darker than red. A list of the built-in functions can be found in the references#[+note(3)].
-			p.pagebreak
+			+section('Inheritance')
+				p Another way Sass helps to reduce code is through the use of "@extends" and "%placeholders". Basically, these commands tell the compiler, "hey, by default, treat #[i this] selector as #[i that] selector." When used with placeholders (which are similar to mixins in that they are blocks of styles that are rendered into the final CSS) extends function very similarly to mixins. Because of this, use cases for placeholders and extends are very limited.
+				p The difference, however, is that instead of duplicating the code, it instead #[i extends] the chosen selector with a comma, indicating that they share the same set of styles. This is beneficial for creating similar elements that all share common traits, whereas mixins are bits of code to be reused across a span of elements. Realistically, the button example above should be using extends; however, the use case for them is so limited that many developers are just more confortable substituting them with mixins.
+				.example
+					h4 Example
+					.columns
+						div
+							h5 Before
+							pre
+								code.
+									%myplaceholder {
+										display: block;
+										max-width: 1020px;
+										margin: auto;
+									}
+
+									.mydiv {
+										@extend %myplaceholder;
+										height: 100%;
+									}
+
+									.yourdiv {
+										@extend %myplaceholder;
+										background: green;
+									}
+
+									.theirdiv {
+										@extend .yourdiv;
+										border-radius: 50%;
+									}
+						div
+							h5 After
+							pre
+								code.
+									.mydiv, .yourdiv, .theirdiv {
+										display: block;
+										max-width: 1020px;
+										margin: auto;
+									}
+
+									.mydiv {
+										height: 100%;
+									}
+
+									.yourdiv, .theirdiv {
+										background: green;
+									}
+
+									.theirdiv {
+										border-radius: 50%;
+									}
 			+section('Imports')
 				p Like regular CSS, Sass supports importing other files using the "@import" directive. Unlike CSS, however, upon compilation, the contents of the referenced files are actually pull into the compiled result. In short, the Sass compiler first replaces import statements with the actual content, and #[i then] compiles it as a single file. This allows developers to use variables and mixins that are declared in another file, as long as the file containing the variable is imported before the file referencing it.
-				p For organization purposes, many developers and teams follow patterns, such the 7-1 Pattern![+notes(4)], where a there's a single core file that imports all other files. SCSS files that are meant to only be used as partials should start with an underscore (_). This prevents the compiling from compiling it as a separate file.
+				p For organization purposes, many developers and teams follow patterns, such the 7-1 Pattern#[+note(4)], where a there's a single core file that imports all other files. SCSS files that are meant to only be used as partials should start with an underscore (_). This prevents the compiling from compiling it as a separate file.
 				p Plugin developers for Sass often add the "!default" flag to their configurable variables. This flag stops the variable from being assigned if it already exists. The benefit of doing this is so users of the plugin won't have to manipulate the vendor file itself, keeping it clean in case updates are needed.
 				.example
 					h4 Example
@@ -419,7 +491,6 @@ html
 										}
 									}
 								}
-			p.pagebreak
 			+section('Reminders')
 				ul
 					li Unlike regular CSS, SCSS requires terminating your properties with semicolons.
@@ -433,6 +504,3 @@ html
 				ul
 					each res in resources
 						li #[a(href=res[0])=res[0]] - #{res[1]}
-			script(src="./js/highlight.pack.js")
-			script.
-				hljs.initHighlightingOnLoad();
